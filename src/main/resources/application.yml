@@ -1,5 +1,13 @@
-## 控制台彩色日志打印
 spring:
+  ## 控制台彩色日志打印
   output:
     ansi:
       enabled: always
+  ## 数据库配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.0.105/order_system?characterEncoding=utf-8&useSSL=false
+  jpa:
+    show-sql: true
