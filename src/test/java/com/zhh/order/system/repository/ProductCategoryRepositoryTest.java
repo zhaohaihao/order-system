@@ -2,8 +2,12 @@ package com.zhh.order.system.repository;
 
 import com.zhh.order.system.OrderSystemApplicationTest;
 import com.zhh.order.system.dataobject.ProductCategory;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author zhh
@@ -26,6 +30,14 @@ public class ProductCategoryRepositoryTest extends OrderSystemApplicationTest {
         ProductCategory productCategory = new ProductCategory();
         productCategory.setCategoryName("热销榜");
         productCategory.setCategoryType(1);
-        repository.save(productCategory);
+        ProductCategory result = repository.save(productCategory);
+        Assert.assertNotNull(result);
+    }
+
+    @Test
+    public void findByCategoryTypeInTest() {
+        List<Integer> list = Arrays.asList(2, 3, 4);
+        List<ProductCategory> result = repository.findByCategoryTypeIn(list);
+        Assert.assertNotEquals(0, result.size());
     }
 }
